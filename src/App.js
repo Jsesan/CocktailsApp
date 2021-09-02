@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import "./App.css";
+import LoginForm from "./components/Login/LoginForm";
+import Header from "./components/UI/Header";
+import CocktailFinder from "./components/Home/CocktailFinder";
+import CocktailList from "./components/Home/CocktailList";
 
 function App() {
+  const validation = (userName) => {
+    return userName.trim().length >= 5;
+  };
+
+  const loggedIn = useSelector((state) => state.login.loggedIn);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      {!loggedIn && <LoginForm validation={validation} />}
+      {loggedIn && <CocktailFinder />}
+      {loggedIn && <CocktailList />}
     </div>
   );
 }
