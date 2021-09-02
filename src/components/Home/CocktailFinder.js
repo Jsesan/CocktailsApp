@@ -15,14 +15,30 @@ const CocktailFinder = () => {
 
     const data = await res.json();
     console.log(data);
-    return data["drinks"];
+    const drinks = data["drinks"];
+    if(drinks!=null){
+      const cocktails = [];
+      drinks.forEach(element => {
+        const cocktail = {
+          title: element.strDrink,
+          ingr1: element.strIngredient1,
+          ingr2: element.strIngredient2,
+          ingr3: element.strIngredient3,
+          ingr4: element.strIngredient4,
+          img: element.strImageSource
+        };
+        cocktails.push(cocktail);
+      });
+
+      return cocktails;
+    }
   }
 
   const submitSearch = async (event) => {
     event.preventDefault();
     const items = await fetchCocktails(value);
-    console.log("items:" + items[0].strDrink); // <<<----- va queriendo por aca
-    //dispatch(cocktailAction.setCocktailsItems())
+    //console.log("items:" + items[0].title);
+    dispatch(cocktailAction.setCocktailsItems(items))
   };
 
   const finderHandler = (event) => {

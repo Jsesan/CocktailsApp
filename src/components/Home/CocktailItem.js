@@ -3,9 +3,10 @@ const CocktailItem = (props) => {
     <li>
       <h3>{props.title}</h3>
       <ul>
-        {props.ingredients.map((item) => (
-          <li>{item}</li>
-        ))}
+        {props.ingr1 && <li>{props.ingr1}</li>}
+        {props.ingr2 && <li>{props.ingr2}</li>}
+        {props.ingr3 && <li>{props.ingr3}</li>}
+        {props.ingr4 && <li>{props.ingr4}</li>}
       </ul>
     </li>
   );
