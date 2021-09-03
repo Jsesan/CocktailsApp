@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cocktailAction } from "../../store/cocktail-slice";
+import { uiAction } from "../../store/ui-slice";
 import "./CocktailFinder.css";
 
 const CocktailFinder = () => {
@@ -16,16 +17,17 @@ const CocktailFinder = () => {
     const data = await res.json();
     console.log(data);
     const drinks = data["drinks"];
-    if(drinks!=null){
+    if (drinks != null) {
       const cocktails = [];
-      drinks.forEach(element => {
+      drinks.forEach((element) => {
         const cocktail = {
+          id: element.idDrink,
           title: element.strDrink,
           ingr1: element.strIngredient1,
           ingr2: element.strIngredient2,
           ingr3: element.strIngredient3,
           ingr4: element.strIngredient4,
-          img: element.strImageSource
+          img: element.strDrinkThumb,
         };
         cocktails.push(cocktail);
       });
@@ -38,7 +40,8 @@ const CocktailFinder = () => {
     event.preventDefault();
     const items = await fetchCocktails(value);
     //console.log("items:" + items[0].title);
-    dispatch(cocktailAction.setCocktailsItems(items))
+    dispatch(cocktailAction.setCocktailsItems(items));
+    dispatch(uiAction.showFinder());
   };
 
   const finderHandler = (event) => {

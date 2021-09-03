@@ -1,0 +1,21 @@
+.list {
+  max-width: 30rem;
+  background-color: #1d1616;
+  color: white;
+  margin-top: 3rem;
+  padding: 2rem;
+  overflow: scroll;
+  height: 35rem;
+  overflow-x: hidden;
+}
+
+.list h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

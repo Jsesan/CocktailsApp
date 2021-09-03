@@ -6,20 +6,15 @@ import { loginAction } from "../../store/login-slice";
 const Input = (props) => {
   const dispatch = useDispatch();
 
-  const {
-    value,
-    isValid,
-    hasError,
-    valueChangeHandler,
-    valueBlurHandler,
-    reset,
-  } = useInput(props.validationFunction);
+  const { value, isValid, hasError, valueChangeHandler, valueBlurHandler } =
+    useInput(props.validationFunction);
 
   const inputClases = hasError ? "form-control invalid" : "form-control";
 
   if (props.id === "username" && isValid) {
     console.log("user valid");
     dispatch(loginAction.usernameInputIsValid(true));
+    dispatch(loginAction.setUsername(value));
   } else if (props.id === "username" && !isValid) {
     dispatch(loginAction.usernameInputIsValid(false));
   }
@@ -27,6 +22,7 @@ const Input = (props) => {
   if (props.id === "pass" && isValid) {
     console.log("pass valid");
     dispatch(loginAction.passInputIsValid(true));
+    dispatch(loginAction.setPass(value));
   } else if (props.id === "pass" && !isValid) {
     dispatch(loginAction.passInputIsValid(false));
   }

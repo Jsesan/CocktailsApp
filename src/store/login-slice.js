@@ -6,6 +6,8 @@ const loginSlice = createSlice({
     loggedIn: false,
     usernameIsValid: false,
     passwordIsValid: false,
+    userName: "",
+    pass: "",
   },
   reducers: {
     login(state) {
@@ -19,6 +21,12 @@ const loginSlice = createSlice({
     },
     passInputIsValid(state, action) {
       state.passwordIsValid = action.payload;
+    },
+    setUsername(state, action) {
+      state.userName = action.payload;
+    },
+    setPass(state, action) {
+      state.pass = action.payload;
     },
   },
 });

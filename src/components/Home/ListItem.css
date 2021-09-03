@@ -1,0 +1,10 @@
+.list-item {
+  height: 90%;
+  background-color: antiquewhite;
+  color: black;
+  border-radius: 5px;
+}
+
+.list-item button {
+  margin-bottom: 3px;
+}

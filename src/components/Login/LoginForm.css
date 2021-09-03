@@ -7,3 +7,8 @@
   margin: 3rem auto;
   margin-top: 10rem;
 }
+
+.error-text {
+  color: #b40e0e;
+  text-align: center;
+}

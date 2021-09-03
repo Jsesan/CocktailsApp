@@ -1,0 +1,11 @@
+.cocktails-item-info {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.cocktails-item-info img {
+  max-width: 25%;
+  max-height: 25%;
+}
