@@ -36,7 +36,15 @@ const uiSlice = createSlice({
       }
       state.favs.push(action.payload);
     },
-    removeFav(state, action) {},
+    removeFav(state, action) {
+      console.log("chauu");
+      const id = action.payload;
+      state.favs = state.favs.filter((item) => item.id !== id);
+      state.favsChange = true;
+    },
+    setFavsChangeToFalse(state) {
+      state.favsChange = false;
+    },
   },
 });
 
