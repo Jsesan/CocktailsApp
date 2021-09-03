@@ -8,7 +8,7 @@ import CocktailList from "./components/Home/CocktailList";
 import Modal from "./components/UI/Modal";
 import { uiAction } from "./store/ui-slice";
 import CocktailItem from "./components/Home/CocktailItem";
-
+let isInitial = true;
 function App() {
   const validation = (userName) => {
     return userName.trim().length >= 5;
@@ -32,17 +32,18 @@ function App() {
     dispatch(uiAction.showFavs());
   };
 
-  let isInitial = true;
-
   useEffect(() => {
+    console.log("useEffect");
     if (isInitial) {
       isInitial = false;
       return;
     }
+    console.log("useEffect");
     if (favsChange) {
-      dispatch(uiAction.sendData(user));
+      console.log("executing this: " + user);
+      //dispatch(uiAction.sendData(user));
     }
-  }, []);
+  }, [favsChange]);
 
   return (
     <div className="app">
