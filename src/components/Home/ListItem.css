@@ -1,10 +1,17 @@
 .list-item {
-  height: 90%;
-  background-color: antiquewhite;
-  color: black;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-.list-item button {
+.list-item-info {
+  width: 70%;
+  color: black;
+  border-radius: 5px;
+  background-color: antiquewhite;
+}
+
+.list-item-info button {
   margin-bottom: 3px;
 }

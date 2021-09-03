@@ -1,12 +1,18 @@
 .list {
   max-width: 30rem;
+  max-height: 30rem;
   background-color: #1d1616;
   color: white;
   margin-top: 3rem;
   padding: 2rem;
   overflow: scroll;
-  height: 35rem;
+  height: fit-content;
   overflow-x: hidden;
+  border-radius: 5px;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .list h2 {

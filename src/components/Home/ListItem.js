@@ -11,11 +11,13 @@ const ListItem = (props) => {
   };
 
   return (
-    <div className="list-item" onClick={expandItem}>
-      <li>
-        <h3>{props.item.title}</h3>
-        <button>Add to favorites</button>
-      </li>
+    <div className="list-item">
+      <div className="list-item-info" onClick={expandItem}>
+        <li>
+          <h3>{props.item.title}</h3>
+        </li>
+      </div>
+      <button>&#11088;</button>
     </div>
   );
 };

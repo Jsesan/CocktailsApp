@@ -15,5 +15,14 @@
 .finder button {
   height: 2rem;
   text-align: center;
+  display: flex;
   margin-left: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.finder-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

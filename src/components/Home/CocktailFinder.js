@@ -51,15 +51,17 @@ const CocktailFinder = () => {
   return (
     <div className="finder-control">
       <form className="finder" onSubmit={submitSearch}>
-        <input
-          id="finder"
-          type="search"
-          placeholder="Find cocktails here..."
-          onChange={finderHandler}
-        ></input>
-        <button>
-          <a>Salute!</a>
-        </button>
+        <div className="finder-elements">
+          <input
+            id="finder"
+            type="search"
+            placeholder="Find cocktails here..."
+            onChange={finderHandler}
+          ></input>
+          <button>
+            <a>Salute!</a>
+          </button>
+        </div>
       </form>
     </div>
   );
