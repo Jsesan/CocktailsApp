@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/login-slice";
+import { uiAction } from "../../store/ui-slice";
 import "./Header.css";
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
   };
 
   const showFavorites = () => {
-    console.log("favorites...");
+    dispatch(uiAction.showFavs());
   };
 
   return (

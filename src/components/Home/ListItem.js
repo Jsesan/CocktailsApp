@@ -10,6 +10,12 @@ const ListItem = (props) => {
     dispatch(uiAction.selectItemList(props.item));
   };
 
+  const addToFavs = () => {
+    console.log("to add --> " + props.item.title);
+    dispatch(uiAction.addFavList(props.item));
+    console.log("pos");
+  };
+
   return (
     <div className="list-item">
       <div className="list-item-info" onClick={expandItem}>
@@ -17,7 +23,7 @@ const ListItem = (props) => {
           <h3>{props.item.title}</h3>
         </li>
       </div>
-      <button>&#11088;</button>
+      <button onClick={addToFavs}>&#11088;</button>
     </div>
   );
 };

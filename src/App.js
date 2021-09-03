@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import LoginForm from "./components/Login/LoginForm";
@@ -20,10 +20,30 @@ function App() {
   const showItem = useSelector((state) => state.ui.openItemList);
   const itemToShow = useSelector((state) => state.ui.itemList);
   const showList = useSelector((state) => state.ui.showFinder);
+  const showFavs = useSelector((state) => state.ui.showFavs);
+  const favsChange = useSelector((state) => state.ui.favsChange);
+  const user = useSelector((state) => state.login.userName);
 
-  const closeBackdrop = () => {
+  const closeBackdropOfItem = () => {
     dispatch(uiAction.clickItemList());
   };
+
+  const closeBackdropOfFavs = () => {
+    dispatch(uiAction.showFavs());
+  };
+
+  let isInitial = true;
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+    if (favsChange) {
+      dispatch(uiAction.sendData(user));
+    }
+  }, []);
+
   return (
     <div className="app">
       <Header />
@@ -31,8 +51,13 @@ function App() {
       {loggedIn && <CocktailFinder />}
       {loggedIn && showList && <CocktailList />}
       {showItem && (
-        <Modal onClick={closeBackdrop}>
+        <Modal onClick={closeBackdropOfItem}>
           <CocktailItem item={itemToShow} />
+        </Modal>
+      )}
+      {showFavs && (
+        <Modal onClick={closeBackdropOfFavs}>
+          <p>Favorites here...</p>
         </Modal>
       )}
     </div>
