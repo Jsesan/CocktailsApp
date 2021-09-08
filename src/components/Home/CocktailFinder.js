@@ -59,7 +59,7 @@ const CocktailFinder = () => {
             onChange={finderHandler}
           ></input>
           <button>
-            <a>Salute!</a>
+            <a>Chin Chin!</a>
           </button>
         </div>
       </form>

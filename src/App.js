@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import LoginForm from "./components/Login/LoginForm";
@@ -8,7 +8,12 @@ import CocktailList from "./components/Home/CocktailList";
 import Modal from "./components/UI/Modal";
 import { uiAction } from "./store/ui-slice";
 import CocktailItem from "./components/Home/CocktailItem";
+import Favorites from "./components/Home/Favorites";
+
+import { fetchFavData, sendFavData } from "./store/ui-actions";
+
 let isInitial = true;
+
 function App() {
   const validation = (userName) => {
     return userName.trim().length >= 5;
@@ -23,6 +28,7 @@ function App() {
   const showFavs = useSelector((state) => state.ui.showFavs);
   const favsChange = useSelector((state) => state.ui.favsChange);
   const user = useSelector((state) => state.login.userName);
+  const favs = useSelector((state) => state.ui.favs);
 
   const closeBackdropOfItem = () => {
     dispatch(uiAction.clickItemList());
@@ -33,7 +39,10 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("useEffect");
+    dispatch(fetchFavData(user));
+  }, [dispatch, user]);
+
+  useEffect(() => {
     if (isInitial) {
       isInitial = false;
       return;
@@ -41,9 +50,10 @@ function App() {
     console.log("useEffect");
     if (favsChange) {
       console.log("executing this: " + user);
-      //dispatch(uiAction.sendData(user));
+      dispatch(sendFavData(user, favs));
+      dispatch(uiAction.setFavsChangeToFalse());
     }
-  }, [favsChange]);
+  }, [favsChange, user, favs, dispatch]);
 
   return (
     <div className="app">
@@ -58,7 +68,7 @@ function App() {
       )}
       {showFavs && (
         <Modal onClick={closeBackdropOfFavs}>
-          <p>Favorites here...</p>
+          <Favorites />
         </Modal>
       )}
     </div>

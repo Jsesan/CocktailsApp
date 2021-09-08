@@ -45,6 +45,9 @@ const uiSlice = createSlice({
     setFavsChangeToFalse(state) {
       state.favsChange = false;
     },
+    replaceFav(state, action) {
+      state.favs = action.payload.favs;
+    },
   },
 });
 

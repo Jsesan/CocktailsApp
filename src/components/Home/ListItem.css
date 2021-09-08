@@ -14,4 +14,14 @@
 
 .list-item-info button {
   margin-bottom: 3px;
+  color: yellow;
+}
+
+.fav {
+  background-color: white;
+}
+
+.fav button {
+  background-color: white;
+  color: yellow;
 }
